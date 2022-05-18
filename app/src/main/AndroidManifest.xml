@@ -10,7 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseasePrediction">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.diseases.DiseaseActivity"
+            android:exported="false"
+            android:label="@string/title_activity_disease" />
+        <activity
+            android:name=".view.consultate.ConsultationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.signup.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.welcome.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
