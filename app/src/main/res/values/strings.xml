@@ -21,4 +21,9 @@
     <string name="medicine">Medicines</string>
     <string name="consultate">Consultate</string>
     <string name="disease">Diseases</string>
+    <string name="consultation_title">Hello #someone#, how could we help you?</string>
+    <string name="insert_complaint_text">Insert your complaint here</string>
+    <string name="submit">Submit</string>
+    <string name="menu1">menu1</string>
+    <string name="menu2">menu2</string>
 </resources>
