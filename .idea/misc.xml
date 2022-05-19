@@ -7,7 +7,12 @@
         <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/activity_disease.xml" value="0.14130434782608695" />
         <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/activity_login.xml" value="0.15942028985507245" />
         <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/activity_main.xml" value="0.15942028985507245" />
+        <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/activity_navigation.xml" value="0.12318840579710146" />
         <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/activity_signup.xml" value="0.14130434782608695" />
+        <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/fragment_consultation.xml" value="0.12318840579710146" />
+        <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/fragment_dashboard.xml" value="0.12318840579710146" />
+        <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/fragment_disease.xml" value="0.12318840579710146" />
+        <entry key="..\:/android project/DiseasePrediction/app/src/main/res/layout/fragment_medicine.xml" value="0.1" />
         <entry key="..\:/android project/DiseasePrediction/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19270833333333334" />
       </map>
     </option>

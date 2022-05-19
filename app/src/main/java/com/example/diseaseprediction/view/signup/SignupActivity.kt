@@ -11,6 +11,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.diseaseprediction.R
 import com.example.diseaseprediction.databinding.ActivitySignupBinding
+import com.example.diseaseprediction.view.navigation.NavigationActivity
 import com.example.diseaseprediction.view.welcome.MainActivity
 
 class SignupActivity : AppCompatActivity() {
@@ -55,6 +56,7 @@ class SignupActivity : AppCompatActivity() {
                     binding.passwordEditTextLayout.error = getString(R.string.password_empty)
                 }
                 else -> {
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
             }

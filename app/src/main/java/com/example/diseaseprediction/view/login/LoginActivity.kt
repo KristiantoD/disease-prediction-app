@@ -11,9 +11,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.diseaseprediction.R
 import com.example.diseaseprediction.databinding.ActivityLoginBinding
-import com.example.diseaseprediction.view.consultate.ConsultationActivity
-import com.example.diseaseprediction.view.diseases.DiseaseActivity
-import com.example.diseaseprediction.view.signup.SignupActivity
+import com.example.diseaseprediction.view.navigation.NavigationActivity
 
 //private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -65,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                     binding.passwordEditTextLayout.error = getString(R.string.password_empty)
                 }
                 else -> {
-                    startActivity(Intent(this, DiseaseActivity::class.java))
+                    startActivity(Intent(this, NavigationActivity::class.java))
                     finish()
                 }
             }

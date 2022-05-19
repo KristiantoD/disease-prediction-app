@@ -10,12 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseasePrediction">
         <activity
-            android:name=".view.diseases.DiseaseActivity"
+            android:name=".view.navigation.NavigationActivity"
             android:exported="false"
-            android:label="@string/title_activity_disease" />
-        <activity
-            android:name=".view.consultate.ConsultationActivity"
-            android:exported="false" />
+            android:label="@string/title_activity_navigation" />
         <activity
             android:name=".view.signup.SignupActivity"
             android:exported="false" />

@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
+    app:startDestination="@+id/navigation_consultation">
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.diseaseprediction.view.diseases.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/navigation_disease"
+        android:name="com.example.diseaseprediction.view.diseases.DiseaseFragment"
+        android:label="fragment_disease"
+        tools:layout="@layout/fragment_disease" />
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.diseaseprediction.view.diseases.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
+        android:id="@+id/navigation_consultation"
+        android:name="com.example.diseaseprediction.view.consultate.ConsultationFragment"
+        android:label="fragment_consultation"
+        tools:layout="@layout/fragment_consultation" />
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.diseaseprediction.view.diseases.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_medicine"
+        android:name="com.example.diseaseprediction.view.medicines.MedicineFragment"
+        android:label="fragment_medicine"
+        tools:layout="@layout/fragment_medicine" />
 </navigation>
