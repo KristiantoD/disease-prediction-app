@@ -2,22 +2,24 @@ package com.example.diseaseprediction.view.consultate
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.diseaseprediction.R
 import com.example.diseaseprediction.databinding.FragmentConsultationBinding
-import com.example.diseaseprediction.databinding.FragmentHomeBinding
-import com.example.diseaseprediction.view.navigation.ui.home.HomeViewModel
+import com.example.diseaseprediction.view.diseases.DiseaseFragment
+import com.example.diseaseprediction.view.welcome.MainActivity
 
 class ConsultationFragment : Fragment() {
     private var _binding: FragmentConsultationBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel : ConsultationViewModel
+    private lateinit var viewModel: ConsultationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +35,33 @@ class ConsultationFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
+
+        val toolbar: Toolbar = binding.toolbar
+        toolbar.inflateMenu(R.menu.logout_menu)
+        toolbar.setLogo(R.drawable.ic_outline_account_circle_24)
         playAnimation()
+
+        toolbar.setOnMenuItemClickListener {
+            if (it.itemId == R.id.menu1) {
+                context?.let { fragmentContext ->
+                    AlertDialog.Builder(fragmentContext).apply {
+                        setTitle(getString(R.string.logout))
+                        setMessage(getString(R.string.logout_message))
+                        setPositiveButton(getString(R.string.logout)) { _, _ ->
+                            val intent = Intent(activity, MainActivity::class.java)
+                            activity?.startActivity(intent)
+                            activity?.finish()
+                        }
+                        setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        create()
+                        show()
+                    }
+                }
+            }
+            true
+        }
         return root
     }
 
@@ -64,5 +92,9 @@ class ConsultationFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance() = ConsultationFragment()
     }
 }

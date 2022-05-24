@@ -26,4 +26,10 @@
     <string name="submit">Submit</string>
     <string name="menu1">menu1</string>
     <string name="menu2">menu2</string>
+    <string name="hello">Hello</string>
+    <string name="logout_message">Are you sure you want to logout?</string>
+    <string name="logout">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="search_medicine">Search medicine here…</string>
+    <string name="search_disease">Search disease here…</string>
 </resources>

@@ -3,12 +3,9 @@ package com.example.diseaseprediction.view.login
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.diseaseprediction.R
 import com.example.diseaseprediction.databinding.ActivityLoginBinding
 import com.example.diseaseprediction.view.navigation.NavigationActivity
@@ -16,7 +13,7 @@ import com.example.diseaseprediction.view.navigation.NavigationActivity
 //private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class LoginActivity : AppCompatActivity() {
-//    private lateinit var loginViewModel: LoginViewModel
+    //    private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 //    private var token = ""
 
