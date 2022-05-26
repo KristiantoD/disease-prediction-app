@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseasePrediction">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.navigation.NavigationActivity"
             android:exported="false"
             android:label="@string/title_activity_navigation" />
