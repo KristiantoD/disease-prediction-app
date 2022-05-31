@@ -32,4 +32,15 @@
     <string name="cancel">Cancel</string>
     <string name="search_medicine">Search medicine here…</string>
     <string name="search_disease">Search disease here…</string>
+    <string name="item_image">Item image</string>
+    <string name="username">Username</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="min_password_6_char">Password must be at least 6 characters</string>
+    <string name="confpassword_notsame_password">Confirm password and password did not match!</string>
+    <string name="api_fail">Server connection failed</string>
+    <string name="username_empty">Insert username</string>
+    <string name="email_invalid">Input a valid email format</string>
+    <string name="login_success">Login success</string>
+    <string name="signup_success">Signup success</string>
+    <string name="how_could_help">, hou could we help you?</string>
 </resources>

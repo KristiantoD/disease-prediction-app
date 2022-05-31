@@ -14,6 +14,10 @@ class Preference private constructor(private val dataStore: DataStore<Preference
         return dataStore.data.map { preferences ->
             AuthorizationModel(
                 preferences[TOKEN_KEY] ?: "",
+                preferences[REFRESH_KEY] ?: "",
+                preferences[NAME_KEY] ?: "",
+                preferences[USERNAME_KEY] ?: "",
+                preferences[EMAIL_KEY] ?: "",
                 preferences[STATE_KEY] ?: false
             )
         }
@@ -22,7 +26,17 @@ class Preference private constructor(private val dataStore: DataStore<Preference
     suspend fun saveAuthorization(user: AuthorizationModel) {
         dataStore.edit { preferences ->
             preferences[TOKEN_KEY] = user.token
+            preferences[REFRESH_KEY] = user.refreshToken
+            preferences[NAME_KEY] = user.name
+            preferences[USERNAME_KEY] = user.username
+            preferences[EMAIL_KEY] = user.email
             preferences[STATE_KEY] = user.isLogin
+        }
+    }
+
+    suspend fun saveToken(token: String) {
+        dataStore.edit { preferences ->
+            preferences[TOKEN_KEY] = token
         }
     }
 
@@ -36,6 +50,10 @@ class Preference private constructor(private val dataStore: DataStore<Preference
         dataStore.edit { preferences ->
             preferences[STATE_KEY] = false
             preferences[TOKEN_KEY] = ""
+            preferences[REFRESH_KEY] = ""
+            preferences[NAME_KEY] = ""
+            preferences[USERNAME_KEY] = ""
+            preferences[EMAIL_KEY] = ""
         }
     }
 
@@ -44,6 +62,10 @@ class Preference private constructor(private val dataStore: DataStore<Preference
         private var INSTANCE: Preference? = null
 
         private val TOKEN_KEY = stringPreferencesKey("token")
+        private val REFRESH_KEY = stringPreferencesKey("refresh")
+        private val NAME_KEY = stringPreferencesKey("name")
+        private val USERNAME_KEY = stringPreferencesKey("username")
+        private val EMAIL_KEY = stringPreferencesKey("email")
         private val STATE_KEY = booleanPreferencesKey("state")
 
         fun getInstance(dataStore: DataStore<Preferences>): Preference {
@@ -58,5 +80,9 @@ class Preference private constructor(private val dataStore: DataStore<Preference
 
 data class AuthorizationModel(
     val token: String,
+    val refreshToken: String,
+    val name: String,
+    val username: String,
+    val email: String,
     val isLogin: Boolean
 )

@@ -1,7 +1,7 @@
 package com.example.diseaseprediction.view.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.diseaseprediction.R
 
 class DetailActivity : AppCompatActivity() {

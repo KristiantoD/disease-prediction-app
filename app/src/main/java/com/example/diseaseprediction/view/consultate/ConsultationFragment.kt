@@ -2,6 +2,7 @@ package com.example.diseaseprediction.view.consultate
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.diseaseprediction.R
 import com.example.diseaseprediction.databinding.FragmentConsultationBinding
-import com.example.diseaseprediction.view.diseases.DiseaseFragment
+import com.example.diseaseprediction.model.Preference
+import com.example.diseaseprediction.view.ViewModelFactory
 import com.example.diseaseprediction.view.welcome.MainActivity
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class ConsultationFragment : Fragment() {
     private var _binding: FragmentConsultationBinding? = null
@@ -26,15 +33,11 @@ class ConsultationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[ConsultationViewModel::class.java]
-
         _binding = FragmentConsultationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        setupViewModel()
+        setupAction()
 
         val toolbar: Toolbar = binding.toolbar
         toolbar.inflateMenu(R.menu.logout_menu)
@@ -48,6 +51,7 @@ class ConsultationFragment : Fragment() {
                         setTitle(getString(R.string.logout))
                         setMessage(getString(R.string.logout_message))
                         setPositiveButton(getString(R.string.logout)) { _, _ ->
+                            viewModel.logout()
                             val intent = Intent(activity, MainActivity::class.java)
                             activity?.startActivity(intent)
                             activity?.finish()
@@ -63,6 +67,25 @@ class ConsultationFragment : Fragment() {
             true
         }
         return root
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(Preference.getInstance(requireContext().dataStore))
+        )[ConsultationViewModel::class.java]
+    }
+
+    private fun setupAction() {
+        viewModel.authorize().observe(viewLifecycleOwner) { user ->
+            binding.toolbartv.text = user.username
+            binding.titleTextView.text = buildString {
+                append(getString(R.string.hello))
+                append(" ")
+                append(user.name)
+                append(getString(R.string.how_could_help))
+            }
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
