@@ -35,7 +35,7 @@ class DiseaseViewModel(private val pref: Preference) : ViewModel() {
         }
     }
 
-    private fun getNewToken(refreshToken: String) {
+    private fun getNewToken(refreshToken: String, type: Int, keyword: String = "") {
         val jsonObject = JSONObject().put("refreshToken", refreshToken)
         val requestBody =
             jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
@@ -52,6 +52,11 @@ class DiseaseViewModel(private val pref: Preference) : ViewModel() {
                     if (responseBody != null) {
                         saveToken(responseBody.accessToken)
                         _newToken.value = responseBody.accessToken
+                        if(type==1){
+                            getAllDisease(_newToken.value?:"", refreshToken)
+                        }else if(type==2){
+                            searchDiseases(_newToken.value?:"", refreshToken, keyword)
+                        }
                     }
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
@@ -78,8 +83,7 @@ class DiseaseViewModel(private val pref: Preference) : ViewModel() {
                         _allItemResponse.value = response.body()
                     }
                 } else {
-                    getNewToken(refreshToken)
-                    getAllDisease(_newToken.value ?: "", refreshToken)
+                    getNewToken(refreshToken, 1)
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
@@ -110,8 +114,7 @@ class DiseaseViewModel(private val pref: Preference) : ViewModel() {
                         _allItemResponse.value = response.body()
                     }
                 } else {
-                    getNewToken(refreshToken)
-                    searchDiseases(_newToken.value ?: "", refreshToken, keyword)
+                    getNewToken(refreshToken, 2, keyword)
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
