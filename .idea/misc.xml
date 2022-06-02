@@ -21,6 +21,10 @@
         <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/drawable/ic_outline_account_circle_24.xml" value="0.1385" />
         <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/drawable/search_view_bg.xml" value="0.1385" />
         <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/activity_detail.xml" value="0.17074275362318841" />
+        <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/activity_detail_disease.xml" value="0.5" />
+        <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/activity_detail_medicine.xml" value="0.5" />
+        <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/activity_login.xml" value="0.15081521739130435" />
+        <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/activity_navigation.xml" value="0.22" />
         <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/activity_signup.xml" value="0.18" />
         <entry key="..\:/project/bangkit/DiseasePrediction/app/src/main/res/layout/fragment_consultation.xml" value="0.18" />

@@ -145,6 +145,9 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
         intent.putExtra(NavigationActivity.EXTRA_TOKEN, accessToken)
         intent.putExtra(NavigationActivity.EXTRA_REFRESH, refreshToken)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
     }
@@ -177,8 +180,4 @@ class LoginActivity : AppCompatActivity() {
             start()
         }
     }
-
-//    companion object {
-//        const val EXTRA_TOKEN = "extra_token"
-//    }
 }

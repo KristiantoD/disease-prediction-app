@@ -48,6 +48,7 @@ class MedicineFragment : Fragment() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchView.clearFocus()
+                viewModel.cancelJob()
                 showLoading(true)
                 viewModel.searchMedicine(accessToken, refreshToken, query ?: "")
                 return true
@@ -55,6 +56,7 @@ class MedicineFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText == "") {
+                    viewModel.cancelJob()
                     showLoading(true)
                     viewModel.getAllMedicine(accessToken, refreshToken)
                 }
@@ -77,9 +79,9 @@ class MedicineFragment : Fragment() {
             refreshToken = user.refreshToken
         }
 
-        viewModel.allItemResponse.observe(viewLifecycleOwner) { allStoryResponse ->
+        viewModel.allItemResponse.observe(viewLifecycleOwner) { allItemResponse ->
             showLoading(true)
-            setMedicineData(allStoryResponse)
+            setMedicineData(allItemResponse)
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) {
@@ -90,7 +92,8 @@ class MedicineFragment : Fragment() {
     private fun setMedicineData(medicineItems: List<ListItemResponse>) {
         val listItem = ArrayList<ListItemResponse>()
         for (medicine in medicineItems) {
-            val itemsItem = ListItemResponse(medicine.img, medicine.name, medicine.excerpt)
+            val itemsItem =
+                ListItemResponse(medicine.img, medicine.name, medicine.slug, medicine.excerpt)
             listItem.add(itemsItem)
         }
         showRecyclerList(listItem)
@@ -98,7 +101,7 @@ class MedicineFragment : Fragment() {
 
     private fun showRecyclerList(listItem: List<ListItemResponse>) {
         binding.rvMedicines.layoutManager = LinearLayoutManager(activity)
-        val listUserAdapter = ListItemAdapter(listItem)
+        val listUserAdapter = ListItemAdapter(listItem, false, accessToken, refreshToken)
         binding.rvMedicines.adapter = listUserAdapter
         showLoading(false)
     }

@@ -48,6 +48,7 @@ class DiseaseFragment : Fragment() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchView.clearFocus()
+                viewModel.cancelJob()
                 showLoading(true)
                 viewModel.searchDiseases(accessToken, refreshToken, query ?: "")
                 return true
@@ -55,6 +56,7 @@ class DiseaseFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText == "") {
+                    viewModel.cancelJob()
                     showLoading(true)
                     viewModel.getAllDisease(accessToken, refreshToken)
                 }
@@ -77,9 +79,9 @@ class DiseaseFragment : Fragment() {
             refreshToken = user.refreshToken
         }
 
-        viewModel.allItemResponse.observe(viewLifecycleOwner) { allStoryResponse ->
+        viewModel.allItemResponse.observe(viewLifecycleOwner) { allItemResponse ->
             showLoading(true)
-            setDiseasesData(allStoryResponse)
+            setDiseasesData(allItemResponse)
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) {
@@ -90,7 +92,8 @@ class DiseaseFragment : Fragment() {
     private fun setDiseasesData(diseaseItems: List<ListItemResponse>) {
         val listItem = ArrayList<ListItemResponse>()
         for (disease in diseaseItems) {
-            val itemsItem = ListItemResponse(disease.img, disease.name, disease.excerpt)
+            val itemsItem =
+                ListItemResponse(disease.img, disease.name, disease.slug, disease.excerpt)
             listItem.add(itemsItem)
         }
         showRecyclerList(listItem)
@@ -98,7 +101,7 @@ class DiseaseFragment : Fragment() {
 
     private fun showRecyclerList(listItem: List<ListItemResponse>) {
         binding.rvDiseases.layoutManager = LinearLayoutManager(activity)
-        val listUserAdapter = ListItemAdapter(listItem)
+        val listUserAdapter = ListItemAdapter(listItem, true, accessToken, refreshToken)
         binding.rvDiseases.adapter = listUserAdapter
         showLoading(false)
     }

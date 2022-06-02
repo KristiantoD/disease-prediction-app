@@ -30,115 +30,130 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:contentDescription="@string/doctor_image"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:srcCompat="@drawable/consultation" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:alpha="0"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/consultation_title"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/messageTextView"
-        android:alpha="0"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/insert_complaint_text"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/complainEditTextLayout"
-        android:alpha="0"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/submitButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messageTextView">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/complainEditText"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:gravity="top|start"
-            android:inputType="text|textMultiLine"
-            tools:text="@string/insert_complaint_text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/submitButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:alpha="0"
-        android:backgroundTint="@color/white"
-        android:text="@string/submit"
-        android:textColor="@color/teal_600"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/teal_600"
-        app:strokeWidth="2dp" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:contentDescription="@string/doctor_image"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/consultation" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0"
+                android:text="@string/consultation_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="260dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/messageTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0"
+                android:text="@string/insert_complaint_text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/complainEditTextLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:alpha="0"
+                app:layout_constraintBottom_toTopOf="@+id/submitButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/messageTextView">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/complainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:ems="10"
+                    android:gravity="top|start"
+                    android:inputType="text|textMultiLine"
+                    tools:text="@string/insert_complaint_text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0"
+                android:backgroundTint="@color/white"
+                android:text="@string/submit"
+                android:textColor="@color/teal_600"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeColor="@color/teal_600"
+                app:strokeWidth="2dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_begin="260dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

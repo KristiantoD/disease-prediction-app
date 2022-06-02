@@ -2,7 +2,6 @@ package com.example.diseaseprediction.view.signup
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns.EMAIL_ADDRESS
 import android.view.View
@@ -12,7 +11,6 @@ import com.example.diseaseprediction.R
 import com.example.diseaseprediction.api.ApiConfig
 import com.example.diseaseprediction.api.responses.RegisterResponse
 import com.example.diseaseprediction.databinding.ActivitySignupBinding
-import com.example.diseaseprediction.view.welcome.MainActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
@@ -121,7 +119,6 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun gotoWelcome() {
-        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         supportActionBar?.hide()
         setupViewModel()
@@ -57,12 +59,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
 
         binding.signupButton.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
-            finish()
         }
     }
 

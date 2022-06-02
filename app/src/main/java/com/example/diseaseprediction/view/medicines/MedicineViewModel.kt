@@ -24,6 +24,7 @@ class MedicineViewModel(private val pref: Preference) : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
     private val _newToken = MutableLiveData<String>()
+    private val _client = MutableLiveData<Call<*>>()
 
     fun authorize(): LiveData<AuthorizationModel> {
         return pref.authorize().asLiveData()
@@ -41,6 +42,7 @@ class MedicineViewModel(private val pref: Preference) : ViewModel() {
             jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
 
         val client = ApiConfig.getApiService().refreshToken(requestBody)
+        _client.value = client
         client.enqueue(object : Callback<TokenResponse> {
             override fun onResponse(
                 call: Call<TokenResponse>,
@@ -52,10 +54,10 @@ class MedicineViewModel(private val pref: Preference) : ViewModel() {
                     if (responseBody != null) {
                         saveToken(responseBody.accessToken)
                         _newToken.value = responseBody.accessToken
-                        if(type==1){
-                            getAllMedicine(_newToken.value?:"", refreshToken)
-                        }else if(type==2){
-                            searchMedicine(_newToken.value?:"", refreshToken, keyword)
+                        if (type == 1) {
+                            getAllMedicine(_newToken.value ?: "", refreshToken)
+                        } else if (type == 2) {
+                            searchMedicine(_newToken.value ?: "", refreshToken, keyword)
                         }
                     }
                 } else {
@@ -72,6 +74,7 @@ class MedicineViewModel(private val pref: Preference) : ViewModel() {
     fun getAllMedicine(accessToken: String, refreshToken: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getAllMedicine("Bearer $accessToken")
+        _client.value = client
         client.enqueue(object : Callback<List<ListItemResponse>> {
             override fun onResponse(
                 call: Call<List<ListItemResponse>>,
@@ -83,13 +86,13 @@ class MedicineViewModel(private val pref: Preference) : ViewModel() {
                         _allItemResponse.value = response.body()
                     }
                 } else {
-                    getNewToken(refreshToken,1)
+                    getNewToken(refreshToken, 1)
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<List<ListItemResponse>>, t: Throwable) {
-                Log.e(TAG, "onFailure: get disease server fail")
+                Log.e(TAG, "onFailure: get medicine server fail")
                 _isLoading.value = false
             }
         })
@@ -103,6 +106,7 @@ class MedicineViewModel(private val pref: Preference) : ViewModel() {
             jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
 
         val client = ApiConfig.getApiService().searchMedicine("Bearer $accessToken", requestBody)
+        _client.value = client
         client.enqueue(object : Callback<List<ListItemResponse>> {
             override fun onResponse(
                 call: Call<List<ListItemResponse>>,
@@ -120,9 +124,13 @@ class MedicineViewModel(private val pref: Preference) : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<ListItemResponse>>, t: Throwable) {
-                Log.e(TAG, "onFailure: get disease server fail")
+                Log.e(TAG, "onFailure: get medicine server fail")
                 _isLoading.value = false
             }
         })
+    }
+
+    fun cancelJob() {
+        _client.value?.cancel()
     }
 }

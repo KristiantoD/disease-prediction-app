@@ -19,6 +19,9 @@ data class ListItemResponse(
     @field:SerializedName("name")
     val name: String,
 
+    @field:SerializedName("slug")
+    val slug: String,
+
     @field:SerializedName("excerpt")
     val excerpt: String,
 ) : Parcelable

@@ -28,7 +28,7 @@ class ViewModelFactory(private val pref: Preference) : ViewModelProvider.NewInst
                 MedicineViewModel(pref) as T
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
-                DetailViewModel(pref) as T
+                DetailViewModel() as T
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(pref) as T

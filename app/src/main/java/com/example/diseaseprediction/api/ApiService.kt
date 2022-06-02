@@ -1,15 +1,9 @@
 package com.example.diseaseprediction.api
 
-import com.example.diseaseprediction.api.responses.ListItemResponse
-import com.example.diseaseprediction.api.responses.LoginResponse
-import com.example.diseaseprediction.api.responses.RegisterResponse
-import com.example.diseaseprediction.api.responses.TokenResponse
+import com.example.diseaseprediction.api.responses.*
 import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     @POST("/register")
@@ -27,6 +21,12 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<List<ListItemResponse>>
 
+    @GET("/diseases/{slug}")
+    fun getDiseaseDetail(
+        @Header("Authorization") token: String,
+        @Path("slug") slug: String
+    ): Call<List<DetailItemResponseItem>>
+
     @POST("/diseases")
     fun searchDiseases(
         @Header("Authorization") token: String,
@@ -43,6 +43,12 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body requestBody: RequestBody
     ): Call<List<ListItemResponse>>
+
+    @GET("/drugs/{slug}")
+    fun getMedicineDetail(
+        @Header("Authorization") token: String,
+        @Path("slug") slug: String
+    ): Call<List<DetailItemResponseItem>>
 
     @POST("/token-app")
     fun refreshToken(
