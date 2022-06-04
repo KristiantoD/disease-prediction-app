@@ -30,6 +30,12 @@ class DiseaseViewModel(private val pref: Preference) : ViewModel() {
         return pref.authorize().asLiveData()
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            pref.logout()
+        }
+    }
+
     fun saveToken(token: String) {
         viewModelScope.launch {
             pref.saveToken(token)
@@ -62,6 +68,7 @@ class DiseaseViewModel(private val pref: Preference) : ViewModel() {
                     }
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
+                    logout()
                 }
             }
 

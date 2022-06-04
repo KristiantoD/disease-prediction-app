@@ -27,6 +27,12 @@ interface ApiService {
         @Path("slug") slug: String
     ): Call<List<DetailItemResponseItem>>
 
+    @GET("/diseases-drugs/diseases/{slug}")
+    fun getDiseaseMedicine(
+        @Header("Authorization") token: String,
+        @Path("slug") slug: String
+    ): Call<List<ListItemResponse>>
+
     @POST("/diseases")
     fun searchDiseases(
         @Header("Authorization") token: String,

@@ -53,18 +53,21 @@ class ListItemAdapter(
 
             val imgPhoto: ImageView = holder.binding.imgItemPhoto
             val tvName: TextView = holder.binding.tvItemName
+            val tvSumamry: TextView = holder.binding.tvItemSummary
             intent.putExtra(EXTRA_TOKEN, accessToken)
             intent.putExtra(EXTRA_REFRESH, refreshToken)
             intent.putExtra(EXTRA_ITEM, item)
 
             val p1 = Pair<View, String>(imgPhoto, "photo")
             val p2 = Pair<View, String>(tvName, "name")
+            val p3 = Pair<View, String>(tvSumamry, "summary")
 
             val optionsCompat: ActivityOptionsCompat =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
                     holder.itemView.context as Activity,
                     p1,
-                    p2
+                    p2,
+                    p3
                 )
             holder.itemView.context.startActivity(intent, optionsCompat.toBundle())
         }

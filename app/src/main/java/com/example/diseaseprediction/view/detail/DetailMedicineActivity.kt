@@ -1,11 +1,13 @@
 package com.example.diseaseprediction.view.detail
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Html
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -20,6 +22,7 @@ import com.example.diseaseprediction.model.Preference
 import com.example.diseaseprediction.view.ViewModelFactory
 import com.example.diseaseprediction.view.adapter.ListItemAdapter
 import com.example.diseaseprediction.view.navigation.NavigationActivity
+import com.example.diseaseprediction.view.welcome.MainActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -70,13 +73,37 @@ class DetailMedicineActivity : AppCompatActivity() {
 
     private fun setupAction() {
         viewModel.detailItemResponse.observe(this) { allStoryResponse ->
-            binding.tvDetailDescription.text = allStoryResponse[0].description
+            binding.tvDetailDescription.text = Html.fromHtml(allStoryResponse[0].description)
         }
 
         viewModel.isLoading.observe(this) {
             isLoading = it
             showLoading(it)
         }
+
+        viewModel.authorize().observe(this) { user ->
+            if (!user.isLogin) {
+                AlertDialog.Builder(this).apply {
+                    setTitle(getString(R.string.session_expired))
+                    setMessage("Please login again")
+                    setPositiveButton(getString(R.string.continuestring)) { _, _ ->
+                        viewModel.logout()
+                        gotoWelcome()
+                    }
+                    create()
+                    show()
+                }
+            }
+        }
+    }
+
+    private fun gotoWelcome() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupViewModel() {

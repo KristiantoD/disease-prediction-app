@@ -16,6 +16,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.diseaseprediction.R
+import com.example.diseaseprediction.api.responses.ResultItem
 import com.example.diseaseprediction.databinding.FragmentConsultationBinding
 import com.example.diseaseprediction.model.Preference
 import com.example.diseaseprediction.view.ViewModelFactory
@@ -77,6 +78,13 @@ class ConsultationFragment : Fragment() {
     }
 
     private fun setupAction() {
+        binding.submitButton.setOnClickListener {
+            val desc = binding.complainEditText.text.toString()
+            if (!desc.isNullOrEmpty()) {
+                viewModel.predict(desc)
+            }
+        }
+
         viewModel.authorize().observe(viewLifecycleOwner) { user ->
             binding.toolbartv.text = user.username
             binding.titleTextView.text = buildString {
@@ -86,6 +94,25 @@ class ConsultationFragment : Fragment() {
                 append(getString(R.string.how_could_help))
             }
         }
+
+        viewModel.predictionResponse.observe(viewLifecycleOwner) { predictionResponse ->
+            showLoading(true)
+            setPredictionData(predictionResponse)
+        }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+    }
+
+    private fun setPredictionData(predictionItems: List<ResultItem>) {
+        val listItem = ArrayList<ResultItem>()
+        for (item in predictionItems) {
+            val itemsItem =
+                ResultItem(item.disease, item.deskripsi)
+            listItem.add(itemsItem)
+        }
+
     }
 
     private fun showLoading(isLoading: Boolean) {

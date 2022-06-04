@@ -42,9 +42,13 @@
     <string name="email_invalid">Input a valid email format</string>
     <string name="login_success">Login success</string>
     <string name="signup_success">Signup success</string>
-    <string name="how_could_help">, hou could we help you?</string>
+    <string name="how_could_help">, how could we help you?</string>
     <string name="summary">Summary</string>
     <string name="description">Description</string>
     <string name="disease_detail">Disease Detail</string>
     <string name="medicine_detail">Medicine Detail</string>
+    <string name="session_expired">Session expired</string>
+    <string name="continuestring">Continue</string>
+    <string name="medicines">Medicines</string>
+    <string name="medicine_notfound">Nothing found in our database, please consult to a doctor to find out more.</string>
 </resources>
