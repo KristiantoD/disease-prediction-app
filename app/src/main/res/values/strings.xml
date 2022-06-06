@@ -51,4 +51,8 @@
     <string name="continuestring">Continue</string>
     <string name="medicines">Medicines</string>
     <string name="medicine_notfound">Nothing found in our database, please consult to a doctor to find out more.</string>
+    <string name="some_predicitons">Here are some prediction for your problem</string>
+    <string name="predicted_disease">Predicted Disease</string>
+    <string name="prediction_result">Prediction result</string>
+    <string name="float_number">88.88</string>
 </resources>

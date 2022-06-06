@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.datastore.core.DataStore
@@ -16,10 +17,10 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.diseaseprediction.R
-import com.example.diseaseprediction.api.responses.ResultItem
 import com.example.diseaseprediction.databinding.FragmentConsultationBinding
 import com.example.diseaseprediction.model.Preference
 import com.example.diseaseprediction.view.ViewModelFactory
+import com.example.diseaseprediction.view.predictionResult.PredictionResultActivity
 import com.example.diseaseprediction.view.welcome.MainActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -80,8 +81,16 @@ class ConsultationFragment : Fragment() {
     private fun setupAction() {
         binding.submitButton.setOnClickListener {
             val desc = binding.complainEditText.text.toString()
-            if (!desc.isNullOrEmpty()) {
-                viewModel.predict(desc)
+            if (desc.isNotBlank()) {
+                val intent = Intent(context, PredictionResultActivity::class.java)
+                intent.putExtra(EXTRA_COMPLAINT, desc)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    context,
+                    "Please enter some complaint first",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
 
@@ -94,29 +103,6 @@ class ConsultationFragment : Fragment() {
                 append(getString(R.string.how_could_help))
             }
         }
-
-        viewModel.predictionResponse.observe(viewLifecycleOwner) { predictionResponse ->
-            showLoading(true)
-            setPredictionData(predictionResponse)
-        }
-
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            showLoading(it)
-        }
-    }
-
-    private fun setPredictionData(predictionItems: List<ResultItem>) {
-        val listItem = ArrayList<ResultItem>()
-        for (item in predictionItems) {
-            val itemsItem =
-                ResultItem(item.disease, item.deskripsi)
-            listItem.add(itemsItem)
-        }
-
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun playAnimation() {
@@ -146,5 +132,6 @@ class ConsultationFragment : Fragment() {
 
     companion object {
         fun newInstance() = ConsultationFragment()
+        const val EXTRA_COMPLAINT = "extra_complaint"
     }
 }

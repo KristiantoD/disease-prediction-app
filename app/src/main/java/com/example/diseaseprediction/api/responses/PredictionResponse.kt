@@ -14,5 +14,9 @@ data class ResultItem(
     val disease: String,
 
     @field:SerializedName("deskripsi")
-    val deskripsi: String
+    val deskripsi: String,
+
+    @field:SerializedName("probability")
+    val probability: Float
+
 )

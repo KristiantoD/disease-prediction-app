@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseasePrediction">
         <activity
-            android:name=".PredictionResultActivity"
+            android:name=".view.predictionResult.PredictionResultActivity"
             android:exported="false" />
         <activity
             android:name=".view.detail.DetailMedicineActivity"
@@ -25,9 +25,11 @@
             android:exported="false"
             android:label="@string/title_activity_navigation" />
         <activity
+            android:hardwareAccelerated="false"
             android:name=".view.signup.SignupActivity"
             android:exported="false" />
         <activity
+            android:hardwareAccelerated="false"
             android:name=".view.login.LoginActivity"
             android:exported="false" />
         <activity
