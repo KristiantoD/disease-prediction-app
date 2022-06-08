@@ -55,4 +55,10 @@
     <string name="predicted_disease">Predicted Disease</string>
     <string name="prediction_result">Prediction result</string>
     <string name="float_number" translatable="false">88.88</string>
+    <string name="info">Info</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="dummy_name">Name: Someone\'s name</string>
+    <string name="dummy_username">Username: Someone\'s username</string>
+    <string name="dummy_email">Email: someone@gmai|l.com</string>
+    <string name="about">About #appname#</string>
 </resources>

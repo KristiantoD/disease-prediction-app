@@ -54,4 +54,10 @@
     <string name="predicted_disease">Penyakit yang diprediksi</string>
     <string name="prediction_result">Hasil prediksi</string>
     <string name="name">Name</string>
+    <string name="info">Info</string>
+    <string name="your_profile">Profilmu</string>
+    <string name="dummy_name">Name: Someone\'s name</string>
+    <string name="dummy_username">Username: Someone\'s username</string>
+    <string name="dummy_email">Email: someone@gmai|l.com</string>
+    <string name="about">Tentang #appname#</string>
 </resources>

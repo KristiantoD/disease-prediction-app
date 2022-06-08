@@ -6,6 +6,7 @@ import com.example.diseaseprediction.model.Preference
 import com.example.diseaseprediction.view.consultate.ConsultationViewModel
 import com.example.diseaseprediction.view.detail.DetailViewModel
 import com.example.diseaseprediction.view.diseases.DiseaseViewModel
+import com.example.diseaseprediction.view.information.InfoViewModel
 import com.example.diseaseprediction.view.login.LoginViewModel
 import com.example.diseaseprediction.view.medicines.MedicineViewModel
 import com.example.diseaseprediction.view.navigation.NavigationViewModel
@@ -34,6 +35,9 @@ class ViewModelFactory(private val pref: Preference) : ViewModelProvider.NewInst
             }
             modelClass.isAssignableFrom(MedicineViewModel::class.java) -> {
                 MedicineViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(InfoViewModel::class.java) -> {
+                InfoViewModel(pref) as T
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(pref) as T
