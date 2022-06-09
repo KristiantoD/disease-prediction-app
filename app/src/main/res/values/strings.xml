@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DiseasePrediction</string>
+    <string name="app_name">DiPi</string>
     <string name="doctor_image">doctor image</string>
     <string name="welcome">Welcome to namaaplikasi, \nlet\'s get started!</string>
     <string name="login">login</string>
