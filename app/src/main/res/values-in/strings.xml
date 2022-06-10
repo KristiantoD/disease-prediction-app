@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DiPi</string>
     <string name="doctor_image">doctor image</string>
-    <string name="welcome">Selamat datang ke DiPi,  \nyuk kita mulai!</string>
+    <string name="welcome">Selamat datang ke DiPi, \nyuk kita mulai!</string>
     <string name="login">login</string>
     <string name="signup">signup</string>
     <string name="password">Password</string>
