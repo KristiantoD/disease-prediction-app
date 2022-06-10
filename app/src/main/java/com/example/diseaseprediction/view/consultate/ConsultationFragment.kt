@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -42,32 +41,20 @@ class ConsultationFragment : Fragment() {
         setupAction()
 
         val toolbar: Toolbar = binding.toolbar
-        toolbar.inflateMenu(R.menu.logout_menu)
-        toolbar.setLogo(R.drawable.ic_outline_account_circle_24)
+        toolbar.setLogo(R.drawable.ic_baseline_arrow_back_24)
+        toolbar.title = getString(R.string.consultation)
+
+        val logo = toolbar.getChildAt(0)
+        logo.setOnClickListener {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            activity?.finish()
+        }
         playAnimation()
 
-        toolbar.setOnMenuItemClickListener {
-            if (it.itemId == R.id.menu1) {
-                context?.let { fragmentContext ->
-                    AlertDialog.Builder(fragmentContext).apply {
-                        setTitle(getString(R.string.logout))
-                        setMessage(getString(R.string.logout_message))
-                        setPositiveButton(getString(R.string.logout)) { _, _ ->
-                            viewModel.logout()
-                            val intent = Intent(activity, MainActivity::class.java)
-                            activity?.startActivity(intent)
-                            activity?.finish()
-                        }
-                        setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        create()
-                        show()
-                    }
-                }
-            }
-            true
-        }
         return root
     }
 
@@ -95,7 +82,6 @@ class ConsultationFragment : Fragment() {
         }
 
         viewModel.authorize().observe(viewLifecycleOwner) { user ->
-            binding.toolbartv.text = user.username
             binding.titleTextView.text = buildString {
                 append(getString(R.string.hello))
                 append(" ")

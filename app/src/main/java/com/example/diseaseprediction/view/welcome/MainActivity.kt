@@ -16,7 +16,6 @@ import com.example.diseaseprediction.databinding.ActivityMainBinding
 import com.example.diseaseprediction.model.Preference
 import com.example.diseaseprediction.view.ViewModelFactory
 import com.example.diseaseprediction.view.login.LoginActivity
-import com.example.diseaseprediction.view.navigation.NavigationActivity
 import com.example.diseaseprediction.view.navigation.NavigationActivity.Companion.EXTRA_REFRESH
 import com.example.diseaseprediction.view.navigation.NavigationActivity.Companion.EXTRA_TOKEN
 import com.example.diseaseprediction.view.signup.SignupActivity
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.authorize().observe(this) { user ->
             if (user.isLogin) {
-                val intent = Intent(this, NavigationActivity::class.java)
+                val intent = Intent(this, AboutActivity::class.java)
                 intent.putExtra(EXTRA_TOKEN, user.token)
                 intent.putExtra(EXTRA_REFRESH, user.refreshToken)
                 startActivity(intent)

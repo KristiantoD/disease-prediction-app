@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseasePrediction">
         <activity
+            android:name=".view.welcome.AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.predictionResult.PredictionResultActivity"
             android:exported="false" />
         <activity
@@ -25,13 +28,13 @@
             android:exported="false"
             android:label="@string/title_activity_navigation" />
         <activity
-            android:hardwareAccelerated="false"
             android:name=".view.signup.SignupActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:hardwareAccelerated="false" />
         <activity
-            android:hardwareAccelerated="false"
             android:name=".view.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:hardwareAccelerated="false" />
         <activity
             android:name=".view.welcome.MainActivity"
             android:exported="true">
@@ -41,6 +44,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

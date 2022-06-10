@@ -57,9 +57,14 @@
     <string name="float_number" translatable="false">88.88</string>
     <string name="info">Info</string>
     <string name="your_profile">Your Profile</string>
-    <string name="dummy_name">Name: Someone\'s name</string>
-    <string name="dummy_username">Username: Someone\'s username</string>
-    <string name="dummy_email">Email: someone@gmai|l.com</string>
+    <string name="dummy_name">Hello, Someone\'s name</string>
+    <string name="dummy_username">username</string>
+    <string name="dummy_email">someone@gmail.com</string>
     <string name="about">About DiPi</string>
     <string name="informations">Informations</string>
+    <string name="profile_image">profile image</string>
+    <string name="dipi">DiPi</string>
+    <string name="start_consultation">Start Consultation</string>
+    <string name="consultation">Consultation</string>
+    <string name="about_dipi_text">Nowadays, even with the fast development of technology, it is still hard to know what disease we have from the symptoms that we know without consulting directly to a doctor. \n\nWe could search for the answer on the internet, but sometimes the result is inaccurate because of the limitation of what we could do on a search engine. What could we do to make disease prediction easier? \n\nWith that problem in mind, we want to make it easier for everyone to gain information about their disease by using the help of machine learning.</string>
 </resources>

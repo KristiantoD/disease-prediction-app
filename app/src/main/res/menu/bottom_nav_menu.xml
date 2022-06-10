@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
-        android:id="@+id/navigation_info"
-        android:icon="@drawable/ic_baseline_info_24"
-        android:title="@string/info" />
+        android:id="@+id/navigation_medicine"
+        android:icon="@drawable/ic_baseline_medical_24"
+        android:title="@string/medicine" />
 
     <item
         android:id="@+id/navigation_consultation"
         android:icon="@drawable/ic_baseline_list_alt_24"
         android:title="@string/consultate" />
-
-    <item
-        android:id="@+id/navigation_medicine"
-        android:icon="@drawable/ic_baseline_medical_24"
-        android:title="@string/medicine" />
 
     <item
         android:id="@+id/navigation_disease"

@@ -61,4 +61,9 @@
     <string name="dummy_email">Email: someone@gmai|l.com</string>
     <string name="about">Tentang DiPi</string>
     <string name="informations">Informasi</string>
+    <string name="profile_image">foto profil</string>
+    <string name="dipi">DiPi</string>
+    <string name="start_consultation">Mulai Konsultasi</string>
+    <string name="consultation">Konsultasi</string>
+    <string name="about_dipi_text">Pada masa kini, meskipun dengan pesatnya perkembangan teknologi, tetap sulit bagi kita untuk dapat mengetahui apa penyakit yang kita miliki dari gejala yang ada tanpa secara langsung berkonsultasi ke dokter. \n\nKita dapat mencari jawabannya pada internet, namun seringkali hasil yang dihasilkan kurang akurat dikarenakan limitasi dari mesin pencarian itu sendiri.\n\nDikarenakan masalah tersebut, kami ingin membuat agar kita dapat dengan lebih mudah mendapat jawaban dengan bantuan machine learning..</string>
 </resources>

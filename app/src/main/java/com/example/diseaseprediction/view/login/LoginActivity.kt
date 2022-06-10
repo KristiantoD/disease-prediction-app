@@ -22,6 +22,7 @@ import com.example.diseaseprediction.model.AuthorizationModel
 import com.example.diseaseprediction.model.Preference
 import com.example.diseaseprediction.view.ViewModelFactory
 import com.example.diseaseprediction.view.navigation.NavigationActivity
+import com.example.diseaseprediction.view.welcome.AboutActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
@@ -142,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun gotoConsultation(accessToken: String, refreshToken: String) {
-        val intent = Intent(this, NavigationActivity::class.java)
+        val intent = Intent(this, AboutActivity::class.java)
         intent.putExtra(NavigationActivity.EXTRA_TOKEN, accessToken)
         intent.putExtra(NavigationActivity.EXTRA_REFRESH, refreshToken)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

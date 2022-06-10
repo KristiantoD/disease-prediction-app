@@ -1,4 +1,4 @@
-package com.example.diseaseprediction.view.information
+package com.example.diseaseprediction.view.welcome
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.example.diseaseprediction.model.AuthorizationModel
 import com.example.diseaseprediction.model.Preference
 import kotlinx.coroutines.launch
 
-class InfoViewModel(private val pref: Preference) : ViewModel() {
+class AboutViewModel(private val pref: Preference) : ViewModel() {
     fun authorize(): LiveData<AuthorizationModel> {
         return pref.authorize().asLiveData()
     }

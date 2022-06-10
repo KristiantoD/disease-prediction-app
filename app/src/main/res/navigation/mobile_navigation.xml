@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/navigation_info">
+    app:startDestination="@+id/navigation_consultation">
     <fragment
         android:id="@+id/navigation_disease"
         android:name="com.example.diseaseprediction.view.diseases.DiseaseFragment"
@@ -18,9 +18,4 @@
         android:name="com.example.diseaseprediction.view.medicines.MedicineFragment"
         android:label="fragment_medicine"
         tools:layout="@layout/fragment_medicine" />
-    <fragment
-        android:id="@+id/navigation_info"
-        android:name="com.example.diseaseprediction.view.information.InfoFragment"
-        android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
 </navigation>
