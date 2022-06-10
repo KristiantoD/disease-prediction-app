@@ -34,18 +34,29 @@
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.AppBarLayout>
 
+            <ImageView
+                android:id="@+id/info_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/group_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                android:contentDescription="@string/info" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:alpha="0"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+                app:layout_constraintTop_toBottomOf="@+id/info_image">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -58,9 +69,9 @@
                         android:layout_marginTop="16dp"
                         android:alpha="0"
                         android:text="@string/your_profile"
+                        android:textColor="@color/teal_400"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="@color/teal_600"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -137,7 +148,7 @@
                         android:text="@string/about"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="@color/teal_600"
+                        android:textColor="@color/teal_400"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 

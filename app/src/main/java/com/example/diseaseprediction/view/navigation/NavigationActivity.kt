@@ -48,8 +48,8 @@ class NavigationActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_info,
-                R.id.navigation_medicine,
                 R.id.navigation_consultation,
+                R.id.navigation_medicine,
                 R.id.navigation_disease
             )
         )

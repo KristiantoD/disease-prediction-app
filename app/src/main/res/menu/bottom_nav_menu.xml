@@ -7,14 +7,14 @@
         android:title="@string/info" />
 
     <item
-        android:id="@+id/navigation_medicine"
-        android:icon="@drawable/ic_baseline_medical_24"
-        android:title="@string/medicine" />
-
-    <item
         android:id="@+id/navigation_consultation"
         android:icon="@drawable/ic_baseline_list_alt_24"
         android:title="@string/consultate" />
+
+    <item
+        android:id="@+id/navigation_medicine"
+        android:icon="@drawable/ic_baseline_medical_24"
+        android:title="@string/medicine" />
 
     <item
         android:id="@+id/navigation_disease"

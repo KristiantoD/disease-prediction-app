@@ -41,6 +41,7 @@ class InfoFragment : Fragment() {
 
         val toolbar: Toolbar = binding.toolbar
         toolbar.inflateMenu(R.menu.logout_menu)
+        toolbar.title = getString(R.string.informations)
 
         toolbar.setOnMenuItemClickListener {
             if (it.itemId == R.id.menu1) {
@@ -93,6 +94,12 @@ class InfoFragment : Fragment() {
     }
 
     private fun playAnimation() {
+        ObjectAnimator.ofFloat(binding.infoImage, View.TRANSLATION_X, -30f, 30f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
         val profileCard =
             ObjectAnimator.ofFloat(binding.cardProfile, View.ALPHA, 1f).setDuration(300)
         val aboutCard = ObjectAnimator.ofFloat(binding.cardAbout, View.ALPHA, 1f).setDuration(300)

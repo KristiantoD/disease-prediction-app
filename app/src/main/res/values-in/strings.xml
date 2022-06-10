@@ -59,5 +59,6 @@
     <string name="dummy_name">Name: Someone\'s name</string>
     <string name="dummy_username">Username: Someone\'s username</string>
     <string name="dummy_email">Email: someone@gmai|l.com</string>
-    <string name="about">Tentang #appname#</string>
+    <string name="about">Tentang DiPi</string>
+    <string name="informations">Informasi</string>
 </resources>
